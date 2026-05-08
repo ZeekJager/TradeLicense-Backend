@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trade License Workflow Test Frontend</title>
+    <style>
+        :root {
+            --bg: #f5f7fb;
+            --panel: #ffffff;
+            --text: #1f2937;
+            --muted: #6b7280;
+            --line: #d9e0ea;
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --danger: #b91c1c;
+            --ok: #047857;
+            --shadow: 0 8px 24px rgba(15, 23, 42, 0.08);
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            background: var(--bg);
+            color: var(--text);
+            font-family: Arial, Helvetica, sans-serif;
+            line-height: 1.4;
+        }
+
+        header {
+            padding: 28px 24px 12px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            margin: 0 0 8px;
+            font-size: 30px;
+            font-weight: 700;
+        }
+
+        .subtitle {
+            color: var(--muted);
+            margin: 0;
+        }
+
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 16px 24px 36px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
+            gap: 18px;
+            align-items: start;
+        }
+
+        .card {
+            background: var(--panel);
+            border: 1px solid var(--line);
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            padding: 18px;
+        }
+
+        .card h2 {
+            margin: 0 0 14px;
+            font-size: 18px;
+        }
+
+        .field {
+            margin-bottom: 12px;
+        }
+
+        label {
+            display: block;
+            font-size: 13px;
+            color: var(--muted);
+            margin-bottom: 5px;
+        }
+
+        input,
+        select,
+        textarea {
+            width: 100%;
+            border: 1px solid var(--line);
+            border-radius: 6px;
+            padding: 10px 11px;
+            font-size: 14px;
+            color: var(--text);
+            background: #fff;
+        }
+
+        textarea {
+            min-height: 76px;
+            resize: vertical;
+        }
+
+        button {
+            width: 100%;
+            border: 0;
+            border-radius: 6px;
+            padding: 11px 12px;
+            font-size: 14px;
+            font-weight: 700;
+            color: #fff;
+            background: var(--primary);
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: var(--primary-dark);
+        }
+
+        .note {
+            margin: 0 0 12px;
+            color: var(--danger);
+            font-size: 13px;
+        }
+
+        .response-card {
+            margin-top: 18px;
+        }
+
+        pre {
+            margin: 0;
+            min-height: 220px;
+            max-height: 520px;
+            overflow: auto;
+            white-space: pre-wrap;
+            word-break: break-word;
+            background: #111827;
+            color: #e5e7eb;
+            border-radius: 8px;
+            padding: 16px;
+            font-size: 13px;
+        }
+
+        .status-line {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+            color: var(--muted);
+            font-size: 13px;
+            margin-top: 12px;
+        }
+
+        .dot {
+            width: 9px;
+            height: 9px;
+            border-radius: 50%;
+            background: var(--ok);
+        }
+    </style>
+</head>
+<body>
+<header>
+    <h1>Trade License Workflow Test Frontend</h1>
+    <p class="subtitle">Backend base URL: <strong>http://localhost:8080</strong></p>
+</header>
+
+<main>
+    <div class="grid">
+        <section class="card">
+            <h2>Request New Trade License Application</h2>
+            <div class="field">
+                <label for="createApplicantId">Applicant ID</label>
+                <input id="createApplicantId" value="11111111-1111-1111-1111-111111111111">
+            </div>
+            <div class="field">
+                <label for="createFullName">Full Name</label>
+                <input id="createFullName" value="Zekarias Tesfaye">
+            </div>
+            <div class="field">
+                <label for="createNationalIdNumber">National ID Number</label>
+                <input id="createNationalIdNumber" value="NID-123456">
+            </div>
+            <div class="field">
+                <label for="createEmail">Email</label>
+                <input id="createEmail" value="zekarias@example.com">
+            </div>
+            <div class="field">
+                <label for="createPhoneNumber">Phone Number</label>
+                <input id="createPhoneNumber" value="0912345678">
+            </div>
+            <div class="field">
+                <label for="createTradeLicenseType">Trade License Type</label>
+                <input id="createTradeLicenseType" value="New Trade License">
+            </div>
+            <div class="field">
+                <label for="createCommodity">Commodity</label>
+                <input id="createCommodity" value="Retail Shop">
+            </div>
+            <button type="button" onclick="createApplication()">Create Application</button>
+        </section>
+
+        <section class="card">
+            <h2>Get Application By ID</h2>
+            <div class="field">
+                <label for="getApplicationId">Application ID</label>
+                <input class="application-id-field" id="getApplicationId" placeholder="Created application ID">
+            </div>
+            <button type="button" onclick="getApplication()">Get Application</button>
+        </section>
+
+        <section class="card">
+            <h2>Submit Application</h2>
+            <p class="note">If submit fails, make sure document upload and payment settlement are implemented or temporarily relaxed in the domain rules.</p>
+            <div class="field">
+                <label for="submitApplicationId">Application ID</label>
+                <input class="application-id-field" id="submitApplicationId" placeholder="Created application ID">
+            </div>
+            <div class="field">
+                <label for="submitActorId">Actor ID</label>
+                <input id="submitActorId" value="11111111-1111-1111-1111-111111111111">
+            </div>
+            <div class="field">
+                <label for="submitRole">Role</label>
+                <select id="submitRole">
+                    <option value="CUSTOMER">CUSTOMER</option>
+                    <option value="LICENSEE">LICENSEE</option>
+                </select>
+            </div>
+            <button type="button" onclick="submitApplication()">Submit</button>
+        </section>
+
+        <section class="card">
+            <h2>Cancel Application</h2>
+            <div class="field">
+                <label for="cancelApplicationId">Application ID</label>
+                <input class="application-id-field" id="cancelApplicationId" placeholder="Created application ID">
+            </div>
+            <div class="field">
+                <label for="cancelActorId">Actor ID</label>
+                <input id="cancelActorId" value="11111111-1111-1111-1111-111111111111">
+            </div>
+            <div class="field">
+                <label for="cancelRole">Role</label>
+                <select id="cancelRole">
+                    <option value="CUSTOMER">CUSTOMER</option>
+                    <option value="LICENSEE">LICENSEE</option>
+                </select>
+            </div>
+            <button type="button" onclick="cancelApplication()">Cancel</button>
+        </section>
+
+        <section class="card">
+            <h2>Get Pending Review Applications</h2>
+            <button type="button" onclick="loadPendingReview()">Load Pending Review</button>
+        </section>
+
+        <section class="card">
+            <h2>Review Application</h2>
+            <div class="field">
+                <label for="reviewApplicationId">Application ID</label>
+                <input class="application-id-field" id="reviewApplicationId" placeholder="Created application ID">
+            </div>
+            <div class="field">
+                <label for="reviewerId">Reviewer ID</label>
+                <input id="reviewerId" value="22222222-2222-2222-2222-222222222222">
+            </div>
+            <div class="field">
+                <label for="reviewRole">Role</label>
+                <select id="reviewRole">
+                    <option value="REVIEWER">REVIEWER</option>
+                </select>
+            </div>
+            <div class="field">
+                <label for="reviewDecision">Decision</label>
+                <select id="reviewDecision">
+                    <option value="ACCEPT">ACCEPT</option>
+                    <option value="REJECT">REJECT</option>
+                    <option value="ADJUST">ADJUST</option>
+                </select>
+            </div>
+            <div class="field">
+                <label for="reviewComment">Comment</label>
+                <textarea id="reviewComment">Application reviewed successfully.</textarea>
+            </div>
+            <button type="button" onclick="reviewApplication()">Review</button>
+        </section>
+
+        <section class="card">
+            <h2>Get Pending Approval Applications</h2>
+            <button type="button" onclick="loadPendingApproval()">Load Pending Approval</button>
+        </section>
+
+        <section class="card">
+            <h2>Approve Application</h2>
+            <div class="field">
+                <label for="approveApplicationId">Application ID</label>
+                <input class="application-id-field" id="approveApplicationId" placeholder="Created application ID">
+            </div>
+            <div class="field">
+                <label for="approverId">Approver ID</label>
+                <input id="approverId" value="33333333-3333-3333-3333-333333333333">
+            </div>
+            <div class="field">
+                <label for="approveRole">Role</label>
+                <select id="approveRole">
+                    <option value="APPROVER">APPROVER</option>
+                </select>
+            </div>
+            <div class="field">
+                <label for="approvalDecision">Decision</label>
+                <select id="approvalDecision">
+                    <option value="APPROVE">APPROVE</option>
+                    <option value="REJECT">REJECT</option>
+                    <option value="REREVIEW">REREVIEW</option>
+                </select>
+            </div>
+            <div class="field">
+                <label for="approvalComment">Comment</label>
+                <textarea id="approvalComment">Application approved.</textarea>
+            </div>
+            <div class="field">
+                <label for="licenseNumber">License Number</label>
+                <input id="licenseNumber" value="TL-2026-0001">
+            </div>
+            <div class="field">
+                <label for="issuedTinNumber">Issued TIN Number</label>
+                <input id="issuedTinNumber" value="TIN-987654">
+            </div>
+            <div class="field">
+                <label for="licenseTypeToIssue">License Type To Issue</label>
+                <input id="licenseTypeToIssue" value="New Trade License">
+            </div>
+            <button type="button" onclick="approveApplication()">Approve</button>
+        </section>
+    </div>
+
+    <section class="card response-card">
+        <h2>Response</h2>
+        <pre id="responseBox">Ready.</pre>
+        <div class="status-line"><span class="dot"></span><span>Responses are displayed as formatted JSON.</span></div>
+    </section>
+</main>
+
+<script>
+    const BASE_URL = "http://localhost:8080";
+
+    async function request(url, method = "GET", body = null) {
+        const options = { method };
+        if (body !== null) {
+            options.headers = { "Content-Type": "application/json" };
+            options.body = JSON.stringify(body);
+        }
+
+        const response = await fetch(BASE_URL + url, options);
+        const text = await response.text();
+        const data = text ? JSON.parse(text) : null;
+
+        if (!response.ok) {
+            throw {
+                status: response.status,
+                statusText: response.statusText,
+                data
+            };
+        }
+
+        return data;
+    }
+
+    function showResponse(data) {
+        document.getElementById("responseBox").textContent = JSON.stringify(data, null, 2);
+        const applicationId = findApplicationId(data);
+        if (applicationId) {
+            fillApplicationIds(applicationId);
+        }
+    }
+
+    function showError(error) {
+        showResponse({
+            error: true,
+            status: error.status || "REQUEST_FAILED",
+            statusText: error.statusText || "",
+            message: error.message || "Request failed",
+            data: error.data || null
+        });
+    }
+
+    function findApplicationId(value) {
+        if (!value) {
+            return null;
+        }
+        if (Array.isArray(value)) {
+            for (const item of value) {
+                const found = findApplicationId(item);
+                if (found) {
+                    return found;
+                }
+            }
+            return null;
+        }
+        if (typeof value === "object") {
+            if (value.applicationId) {
+                return value.applicationId;
+            }
+            for (const key of Object.keys(value)) {
+                const found = findApplicationId(value[key]);
+                if (found) {
+                    return found;
+                }
+            }
+        }
+        return null;
+    }
+
+    function fillApplicationIds(applicationId) {
+        document.querySelectorAll(".application-id-field").forEach((field) => {
+            field.value = applicationId;
+        });
+    }
+
+    function value(id) {
+        return document.getElementById(id).value.trim();
+    }
+
+    async function run(operation) {
+        try {
+            const data = await operation();
+            showResponse(data);
+        } catch (error) {
+            showError(error);
+        }
+    }
+
+    function createApplication() {
+        return run(() => request("/api/trade-license-applications", "POST", {
+            applicantId: value("createApplicantId"),
+            fullName: value("createFullName"),
+            nationalIdNumber: value("createNationalIdNumber"),
+            email: value("createEmail"),
+            phoneNumber: value("createPhoneNumber"),
+            tradeLicenseType: value("createTradeLicenseType"),
+            commodity: value("createCommodity")
+        }));
+    }
+
+    function getApplication() {
+        return run(() => request(`/api/trade-license-applications/${value("getApplicationId")}`));
+    }
+
+    function submitApplication() {
+        return run(() => request(`/api/trade-license-applications/${value("submitApplicationId")}/submit`, "POST", {
+            actorId: value("submitActorId"),
+            role: value("submitRole")
+        }));
+    }
+
+    function cancelApplication() {
+        return run(() => request(`/api/trade-license-applications/${value("cancelApplicationId")}/cancel`, "POST", {
+            actorId: value("cancelActorId"),
+            role: value("cancelRole")
+        }));
+    }
+
+    function loadPendingReview() {
+        return run(() => request("/api/trade-license-reviews/pending"));
+    }
+
+    function reviewApplication() {
+        return run(() => request(`/api/trade-license-reviews/${value("reviewApplicationId")}`, "POST", {
+            reviewerId: value("reviewerId"),
+            role: value("reviewRole"),
+            decision: value("reviewDecision"),
+            comment: value("reviewComment")
+        }));
+    }
+
+    function loadPendingApproval() {
+        return run(() => request("/api/trade-license-approvals/pending"));
+    }
+
+    function approveApplication() {
+        return run(() => request(`/api/trade-license-approvals/${value("approveApplicationId")}`, "POST", {
+            approverId: value("approverId"),
+            role: value("approveRole"),
+            decision: value("approvalDecision"),
+            comment: value("approvalComment"),
+            licenseNumber: value("licenseNumber"),
+            tinNumber: value("issuedTinNumber"),
+            licenseTypeToIssue: value("licenseTypeToIssue")
+        }));
+    }
+</script>
+</body>
+</html>
