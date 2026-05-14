@@ -5,7 +5,7 @@
       <driver-ref>h2.unified</driver-ref>
       <synchronize>true</synchronize>
       <imported>true</imported>
-      <remarks>C:/Users/zacha/AppData/Local/Temp/aef058f3-c380-407d-9687-593e3baaaed3_demo.zip.ed3/tradelicense/src/main/resources/application.properties</remarks>
+      <remarks>C:/Users/zacha/Documents/GitHub/TradeLicense Backend/src/main/resources/application.properties</remarks>
       <jdbc-driver>org.h2.Driver</jdbc-driver>
       <jdbc-url>jdbc:h2:mem:testdb</jdbc-url>
       <jdbc-additional-properties>

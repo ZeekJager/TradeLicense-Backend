@@ -21,6 +21,8 @@ public interface TradeLicenseApplicationRepositoryPort {
 
     Optional<TradeLicenseApplication> findById(ApplicationId applicationId);
 
+    List<TradeLicenseApplication> findAll();
+
     List<TradeLicenseApplication> findByStatus(ApplicationStatus status);
 
     boolean existsByApplicationId(ApplicationId applicationId);

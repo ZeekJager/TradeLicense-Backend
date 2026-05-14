@@ -32,11 +32,14 @@ public class RequestNewTradeLicenseApplicationValidator {
         Objects.requireNonNull(command, "Command is required");
         requireNonNull(command.applicantId(), "Applicant id is required");
         requireText(command.fullName(), "Full name is required");
+        requireText(command.tradeName(), "Trade name is required");
         requireText(command.nationalIdNumber(), "National id number is required");
         requireText(command.email(), "Email is required");
         requireText(command.phoneNumber(), "Phone number is required");
         requireText(command.tradeLicenseType(), "Trade license type is required");
         requireText(command.commodity(), "Commodity is required");
+        requireText(command.bankAccountNumber(), "Trade bank account number is required");
+        requireNationalIdNumber(command.nationalIdNumber());
         validateUserIdDoesNotExist(new UserId(command.applicantId()));
         validateFullNameDoesNotExist(new FullName(command.fullName()));
         validateNationalIdNumberDoesNotExist(new NationalIdNumber(command.nationalIdNumber()));
@@ -95,6 +98,12 @@ public class RequestNewTradeLicenseApplicationValidator {
     private void requireText(String value, String message) {
         if (value == null || value.isBlank()) {
             throw new IllegalArgumentException(message);
+        }
+    }
+
+    private void requireNationalIdNumber(String value) {
+        if (value == null || !value.matches("\\d{16}")) {
+            throw new IllegalArgumentException("National ID number must be exactly 16 digits");
         }
     }
 }

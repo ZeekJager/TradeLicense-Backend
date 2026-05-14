@@ -30,6 +30,7 @@ public class JpaTradeLicenseApplicationEntity {
 
     @Column(unique = true)
     private String fullName;
+    private String tradeName;
     @Column(unique = true)
     private String nationalIdNumber;
     @Column(unique = true)
@@ -38,6 +39,7 @@ public class JpaTradeLicenseApplicationEntity {
     private String phoneNumber;
     private String tradeLicenseType;
     private String commodity;
+    private String tradeBankAccountNumber;
     @Column(unique = true)
     private UUID documentId;
     private String documentType;
@@ -85,11 +87,13 @@ public class JpaTradeLicenseApplicationEntity {
             UUID applicantId,
             UserRole applicantRole,
             String fullName,
+            String tradeName,
             String nationalIdNumber,
             String email,
             String phoneNumber,
             String tradeLicenseType,
             String commodity,
+            String tradeBankAccountNumber,
             UUID documentId,
             String documentType,
             String documentReference,
@@ -115,11 +119,13 @@ public class JpaTradeLicenseApplicationEntity {
         this.applicantId = applicantId;
         this.applicantRole = applicantRole;
         this.fullName = fullName;
+        this.tradeName = tradeName;
         this.nationalIdNumber = nationalIdNumber;
         this.email = email;
         this.phoneNumber = phoneNumber;
         this.tradeLicenseType = tradeLicenseType;
         this.commodity = commodity;
+        this.tradeBankAccountNumber = tradeBankAccountNumber;
         this.documentId = documentId;
         this.documentType = documentType;
         this.documentReference = documentReference;
@@ -158,6 +164,10 @@ public class JpaTradeLicenseApplicationEntity {
         return fullName;
     }
 
+    public String getTradeName() {
+        return tradeName;
+    }
+
     public String getNationalIdNumber() {
         return nationalIdNumber;
     }
@@ -176,6 +186,10 @@ public class JpaTradeLicenseApplicationEntity {
 
     public String getCommodity() {
         return commodity;
+    }
+
+    public String getTradeBankAccountNumber() {
+        return tradeBankAccountNumber;
     }
 
     public UUID getDocumentId() {

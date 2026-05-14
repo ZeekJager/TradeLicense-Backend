@@ -14,6 +14,7 @@ import com.trade.tradelicense.domain.enums.UserRole;
 import com.trade.tradelicense.domain.valueobjects.ApplicationId;
 import com.trade.tradelicense.domain.valueobjects.ApprovalComment;
 import com.trade.tradelicense.domain.valueobjects.ApproverId;
+import com.trade.tradelicense.domain.valueobjects.BankAccountNumber;
 import com.trade.tradelicense.domain.valueobjects.Commodity;
 import com.trade.tradelicense.domain.valueobjects.DocumentId;
 import com.trade.tradelicense.domain.valueobjects.DocumentReference;
@@ -28,6 +29,7 @@ import com.trade.tradelicense.domain.valueobjects.PhoneNumber;
 import com.trade.tradelicense.domain.valueobjects.ReviewComment;
 import com.trade.tradelicense.domain.valueobjects.ReviewerId;
 import com.trade.tradelicense.domain.valueobjects.TradeLicenseType;
+import com.trade.tradelicense.domain.valueobjects.TradeName;
 import com.trade.tradelicense.domain.valueobjects.UserId;
 import com.trade.tradelicense.application.common.TradeLicenseApplicationRepositoryPort;
 import org.springframework.stereotype.Repository;
@@ -58,6 +60,13 @@ public class TradeLicenseApplicationRepositoryAdapter implements TradeLicenseApp
     }
 
     @Override
+    public List<TradeLicenseApplication> findAll() {
+        return repository.findAll().stream()
+                .map(this::toDomain)
+                .toList();
+    }
+
+    @Override
     public List<TradeLicenseApplication> findByStatus(ApplicationStatus status) {
         return repository.findByStatus(status).stream()
                 .map(this::toDomain)
@@ -77,11 +86,13 @@ public class TradeLicenseApplicationRepositoryAdapter implements TradeLicenseApp
                 applicant.getUserId().value(),
                 applicant.getRole(),
                 applicant.getFullName().value(),
+                application.tradeName().value(),
                 applicant.getNationalIdNumber().value(),
                 applicant.getEmailAddress().value(),
                 applicant.getPhoneNumber().value(),
                 application.licenseType().code(),
                 application.commodity().code(),
+                application.tradeBankAccountNumber().value(),
                 document == null ? null : document.id().value(),
                 document == null ? null : document.documentType().value(),
                 document == null ? null : document.documentReference().value(),
@@ -163,8 +174,10 @@ public class TradeLicenseApplicationRepositoryAdapter implements TradeLicenseApp
         return TradeLicenseApplication.rehydrate(
                 new ApplicationId(entity.getId()),
                 applicant,
+                new TradeName(defaultText(entity.getTradeName(), entity.getFullName())),
                 licenseType,
                 commodity,
+                new BankAccountNumber(defaultText(entity.getTradeBankAccountNumber(), "REHYDRATED_BANK_ACCOUNT")),
                 documentPackage,
                 paymentSettlement,
                 reviewRecord,

@@ -4,6 +4,7 @@ import com.trade.tradelicense.application.commands.ReviewTradeLicenseApplication
 import com.trade.tradelicense.application.commands.handlers.ReviewTradeLicenseApplicationHandler;
 import com.trade.tradelicense.application.queries.GetPendingReviewApplicationsQuery;
 import com.trade.tradelicense.application.queries.handlers.GetPendingReviewApplicationsHandler;
+import com.trade.tradelicense.infrastructure.services.ApplicationAuditService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -22,13 +23,16 @@ import java.util.UUID;
 public class TradeLicenseReviewController {
     private final ReviewTradeLicenseApplicationHandler reviewHandler;
     private final GetPendingReviewApplicationsHandler getPendingReviewHandler;
+    private final ApplicationAuditService auditService;
 
     public TradeLicenseReviewController(
             ReviewTradeLicenseApplicationHandler reviewHandler,
-            GetPendingReviewApplicationsHandler getPendingReviewHandler
+            GetPendingReviewApplicationsHandler getPendingReviewHandler,
+            ApplicationAuditService auditService
     ) {
         this.reviewHandler = reviewHandler;
         this.getPendingReviewHandler = getPendingReviewHandler;
+        this.auditService = auditService;
     }
 
     @GetMapping("/pending")
@@ -51,6 +55,14 @@ public class TradeLicenseReviewController {
                 request.decision(),
                 request.comment()
         ));
+        auditService.record(
+                applicationId,
+                "REVIEW_" + request.decision().name(),
+                result.data().status(),
+                request.reviewerId(),
+                request.role(),
+                request.comment()
+        );
         return ResponseEntity.ok(TradeLicenseApplicationResponse.fromDomain(result.data()));
     }
 }

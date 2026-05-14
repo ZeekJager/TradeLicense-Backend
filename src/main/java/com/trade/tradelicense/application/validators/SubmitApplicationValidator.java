@@ -1,6 +1,7 @@
 package com.trade.tradelicense.application.validators;
 
 import com.trade.tradelicense.application.commands.CancelTradeLicenseApplicationCommand;
+import com.trade.tradelicense.application.commands.ResubmitTradeLicenseApplicationCommand;
 import com.trade.tradelicense.application.commands.SubmitTradeLicenseApplicationCommand;
 import org.springframework.stereotype.Component;
 
@@ -16,6 +17,13 @@ public class SubmitApplicationValidator {
     }
 
     public void validate(CancelTradeLicenseApplicationCommand command) {
+        Objects.requireNonNull(command, "Command is required");
+        requireNonNull(command.applicationId(), "Application id is required");
+        requireNonNull(command.actorId(), "Actor id is required");
+        requireNonNull(command.role(), "Actor role is required");
+    }
+
+    public void validate(ResubmitTradeLicenseApplicationCommand command) {
         Objects.requireNonNull(command, "Command is required");
         requireNonNull(command.applicationId(), "Application id is required");
         requireNonNull(command.actorId(), "Actor id is required");

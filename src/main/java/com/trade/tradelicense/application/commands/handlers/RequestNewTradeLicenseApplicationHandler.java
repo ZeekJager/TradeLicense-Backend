@@ -5,6 +5,7 @@ import com.trade.tradelicense.domain.entities.User;
 import com.trade.tradelicense.domain.enums.UserRole;
 import com.trade.tradelicense.domain.factories.TradeLicenseApplicationFactory;
 import com.trade.tradelicense.domain.valueobjects.Commodity;
+import com.trade.tradelicense.domain.valueobjects.BankAccountNumber;
 import com.trade.tradelicense.domain.valueobjects.EmailAddress;
 import com.trade.tradelicense.domain.valueobjects.FullName;
 import com.trade.tradelicense.domain.valueobjects.Money;
@@ -12,6 +13,7 @@ import com.trade.tradelicense.domain.valueobjects.NationalIdNumber;
 import com.trade.tradelicense.domain.valueobjects.PaymentReference;
 import com.trade.tradelicense.domain.valueobjects.PhoneNumber;
 import com.trade.tradelicense.domain.valueobjects.TradeLicenseType;
+import com.trade.tradelicense.domain.valueobjects.TradeName;
 import com.trade.tradelicense.domain.valueobjects.UserId;
 import com.trade.tradelicense.application.commands.RequestNewTradeLicenseApplicationCommand;
 import com.trade.tradelicense.application.common.CommandHandler;
@@ -56,8 +58,10 @@ public class RequestNewTradeLicenseApplicationHandler implements CommandHandler<
 
         TradeLicenseApplication application = factory.createDraftApplication(
                 applicant,
+                new TradeName(command.tradeName()),
                 new TradeLicenseType(command.tradeLicenseType(), command.tradeLicenseType()),
                 new Commodity(command.commodity(), command.commodity()),
+                new BankAccountNumber(command.bankAccountNumber()),
                 new Money(BigDecimal.ZERO, "USD"),
                 new PaymentReference("PENDING_PAYMENT")
         );

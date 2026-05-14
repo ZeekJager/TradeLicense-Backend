@@ -3,12 +3,37 @@ package com.trade.tradelicense.domain.factories;
 import com.trade.tradelicense.domain.aggregates.TradeLicenseApplication;
 import com.trade.tradelicense.domain.entities.PaymentSettlement;
 import com.trade.tradelicense.domain.entities.User;
+import com.trade.tradelicense.domain.valueobjects.BankAccountNumber;
 import com.trade.tradelicense.domain.valueobjects.Commodity;
 import com.trade.tradelicense.domain.valueobjects.Money;
 import com.trade.tradelicense.domain.valueobjects.PaymentReference;
 import com.trade.tradelicense.domain.valueobjects.TradeLicenseType;
+import com.trade.tradelicense.domain.valueobjects.TradeName;
 
 public class TradeLicenseApplicationFactory {
+    public TradeLicenseApplication createDraftApplication(
+            User applicant,
+            TradeName tradeName,
+            TradeLicenseType licenseType,
+            Commodity commodity,
+            BankAccountNumber tradeBankAccountNumber,
+            Money fee,
+            PaymentReference paymentReference
+    ) {
+        return TradeLicenseApplication.createDraft(applicant, tradeName, licenseType, commodity, tradeBankAccountNumber, fee, paymentReference);
+    }
+
+    public TradeLicenseApplication createDraftApplication(
+            User applicant,
+            TradeLicenseType licenseType,
+            Commodity commodity,
+            BankAccountNumber tradeBankAccountNumber,
+            Money fee,
+            PaymentReference paymentReference
+    ) {
+        return TradeLicenseApplication.createDraft(applicant, licenseType, commodity, tradeBankAccountNumber, fee, paymentReference);
+    }
+
     public TradeLicenseApplication createDraftApplication(
             User applicant,
             TradeLicenseType licenseType,

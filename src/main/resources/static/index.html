@@ -177,8 +177,12 @@
                 <input id="createFullName" value="Zekarias Tesfaye">
             </div>
             <div class="field">
+                <label for="createTradeName">Trade Name</label>
+                <input id="createTradeName" value="Zekarias Retail Trading">
+            </div>
+            <div class="field">
                 <label for="createNationalIdNumber">National ID Number</label>
-                <input id="createNationalIdNumber" value="NID-123456">
+                <input id="createNationalIdNumber" value="1234567890123456">
             </div>
             <div class="field">
                 <label for="createEmail">Email</label>
@@ -195,6 +199,10 @@
             <div class="field">
                 <label for="createCommodity">Commodity</label>
                 <input id="createCommodity" value="Retail Shop">
+            </div>
+            <div class="field">
+                <label for="createBankAccountNumber">Trade Bank Account Number</label>
+                <input id="createBankAccountNumber" value="1000200030004000">
             </div>
             <button type="button" onclick="createApplication()">Create Application</button>
         </section>
@@ -434,11 +442,13 @@
         return run(() => request("/api/trade-license-applications", "POST", {
             applicantId: value("createApplicantId"),
             fullName: value("createFullName"),
+            tradeName: value("createTradeName"),
             nationalIdNumber: value("createNationalIdNumber"),
             email: value("createEmail"),
             phoneNumber: value("createPhoneNumber"),
             tradeLicenseType: value("createTradeLicenseType"),
-            commodity: value("createCommodity")
+            commodity: value("createCommodity"),
+            bankAccountNumber: value("createBankAccountNumber")
         }));
     }
 

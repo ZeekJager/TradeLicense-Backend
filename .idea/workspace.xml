@@ -4,22 +4,101 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4ee3db11-03a6-4393-9122-88326c7aa801" name="Changes" comment="initialize Spring Boot project with Maven setup and basic application structure" />
+    <list default="true" id="4ee3db11-03a6-4393-9122-88326c7aa801" name="Changes" comment="initialize Spring Boot project with Maven setup and basic application structure">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/data_sources_history.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/data_sources_history.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/trade/tradelicense/application/commands/RequestNewTradeLicenseApplicationCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/trade/tradelicense/application/commands/RequestNewTradeLicenseApplicationCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/trade/tradelicense/application/commands/handlers/RequestNewTradeLicenseApplicationHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/trade/tradelicense/application/commands/handlers/RequestNewTradeLicenseApplicationHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/trade/tradelicense/application/common/TradeLicenseApplicationRepositoryPort.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/trade/tradelicense/application/common/TradeLicenseApplicationRepositoryPort.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/trade/tradelicense/application/common/TradeLicenseRepositoryPort.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/trade/tradelicense/application/common/TradeLicenseRepositoryPort.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/trade/tradelicense/application/validators/RequestNewTradeLicenseApplicationValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/trade/tradelicense/application/validators/RequestNewTradeLicenseApplicationValidator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/trade/tradelicense/application/validators/SubmitApplicationValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/trade/tradelicense/application/validators/SubmitApplicationValidator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/trade/tradelicense/domain/aggregates/TradeLicense.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/trade/tradelicense/domain/aggregates/TradeLicense.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/trade/tradelicense/domain/aggregates/TradeLicenseApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/trade/tradelicense/domain/aggregates/TradeLicenseApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/trade/tradelicense/domain/enums/UserRole.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/trade/tradelicense/domain/enums/UserRole.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/trade/tradelicense/domain/factories/TradeLicenseApplicationFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/trade/tradelicense/domain/factories/TradeLicenseApplicationFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/trade/tradelicense/domain/valueobjects/TradeLicenseType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/trade/tradelicense/domain/valueobjects/TradeLicenseType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/trade/tradelicense/infrastructure/persistence/JpaTradeLicenseApplicationEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/trade/tradelicense/infrastructure/persistence/JpaTradeLicenseApplicationEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/trade/tradelicense/infrastructure/persistence/JpaTradeLicenseEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/trade/tradelicense/infrastructure/persistence/JpaTradeLicenseEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/trade/tradelicense/infrastructure/repositories/SpringDataTradeLicenseRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/trade/tradelicense/infrastructure/repositories/SpringDataTradeLicenseRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/trade/tradelicense/infrastructure/repositories/TradeLicenseApplicationRepositoryAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/trade/tradelicense/infrastructure/repositories/TradeLicenseApplicationRepositoryAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/trade/tradelicense/infrastructure/repositories/TradeLicenseRepositoryAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/trade/tradelicense/infrastructure/repositories/TradeLicenseRepositoryAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/trade/tradelicense/infrastructure/services/FileStorageService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/trade/tradelicense/infrastructure/services/FileStorageService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/trade/tradelicense/presentation/controllers/ApiExceptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/trade/tradelicense/presentation/controllers/ApiExceptionHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/trade/tradelicense/presentation/controllers/TradeLicenseApplicationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/trade/tradelicense/presentation/controllers/TradeLicenseApplicationController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/trade/tradelicense/presentation/controllers/TradeLicenseApprovalController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/trade/tradelicense/presentation/controllers/TradeLicenseApprovalController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/trade/tradelicense/presentation/controllers/TradeLicenseReviewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/trade/tradelicense/presentation/controllers/TradeLicenseReviewController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/trade/tradelicense/presentation/dto/RequestNewTradeLicenseApplicationRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/trade/tradelicense/presentation/dto/RequestNewTradeLicenseApplicationRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/trade/tradelicense/presentation/dto/TradeLicenseApplicationResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/trade/tradelicense/presentation/dto/TradeLicenseApplicationResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/trade/tradelicense/application/commands/RequestNewTradeLicenseApplicationCommand.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/trade/tradelicense/application/commands/RequestNewTradeLicenseApplicationCommand.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/trade/tradelicense/application/commands/handlers/RequestNewTradeLicenseApplicationHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/trade/tradelicense/application/commands/handlers/RequestNewTradeLicenseApplicationHandler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/trade/tradelicense/application/common/TradeLicenseApplicationRepositoryPort.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/trade/tradelicense/application/common/TradeLicenseApplicationRepositoryPort.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/trade/tradelicense/application/common/TradeLicenseRepositoryPort.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/trade/tradelicense/application/common/TradeLicenseRepositoryPort.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/trade/tradelicense/application/validators/RequestNewTradeLicenseApplicationValidator.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/trade/tradelicense/application/validators/RequestNewTradeLicenseApplicationValidator.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/trade/tradelicense/application/validators/SubmitApplicationValidator.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/trade/tradelicense/application/validators/SubmitApplicationValidator.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/trade/tradelicense/domain/aggregates/TradeLicense.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/trade/tradelicense/domain/aggregates/TradeLicense.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/trade/tradelicense/domain/aggregates/TradeLicenseApplication$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/trade/tradelicense/domain/aggregates/TradeLicenseApplication$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/trade/tradelicense/domain/aggregates/TradeLicenseApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/trade/tradelicense/domain/aggregates/TradeLicenseApplication.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/trade/tradelicense/domain/enums/UserRole.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/trade/tradelicense/domain/enums/UserRole.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/trade/tradelicense/domain/factories/TradeLicenseApplicationFactory.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/trade/tradelicense/domain/factories/TradeLicenseApplicationFactory.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/trade/tradelicense/domain/valueobjects/TradeLicenseType.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/trade/tradelicense/domain/valueobjects/TradeLicenseType.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/trade/tradelicense/infrastructure/persistence/JpaTradeLicenseApplicationEntity.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/trade/tradelicense/infrastructure/persistence/JpaTradeLicenseApplicationEntity.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/trade/tradelicense/infrastructure/persistence/JpaTradeLicenseEntity.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/trade/tradelicense/infrastructure/persistence/JpaTradeLicenseEntity.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/trade/tradelicense/infrastructure/repositories/SpringDataTradeLicenseRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/trade/tradelicense/infrastructure/repositories/SpringDataTradeLicenseRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/trade/tradelicense/infrastructure/repositories/TradeLicenseApplicationRepositoryAdapter.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/trade/tradelicense/infrastructure/repositories/TradeLicenseApplicationRepositoryAdapter.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/trade/tradelicense/infrastructure/repositories/TradeLicenseRepositoryAdapter.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/trade/tradelicense/infrastructure/repositories/TradeLicenseRepositoryAdapter.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/trade/tradelicense/infrastructure/services/FileStorageService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/trade/tradelicense/infrastructure/services/FileStorageService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/trade/tradelicense/presentation/controllers/ApiExceptionHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/trade/tradelicense/presentation/controllers/ApiExceptionHandler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/trade/tradelicense/presentation/controllers/TradeLicenseApplicationController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/trade/tradelicense/presentation/controllers/TradeLicenseApplicationController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/trade/tradelicense/presentation/controllers/TradeLicenseApprovalController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/trade/tradelicense/presentation/controllers/TradeLicenseApprovalController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/trade/tradelicense/presentation/controllers/TradeLicenseReviewController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/trade/tradelicense/presentation/controllers/TradeLicenseReviewController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/trade/tradelicense/presentation/dto/RequestNewTradeLicenseApplicationRequest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/trade/tradelicense/presentation/dto/RequestNewTradeLicenseApplicationRequest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/trade/tradelicense/presentation/dto/TradeLicenseApplicationResponse.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/trade/tradelicense/presentation/dto/TradeLicenseApplicationResponse.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-com.trade.tradelicense.TradelicenseApplicationTests.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/TEST-com.trade.tradelicense.TradelicenseApplicationTests.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/com.trade.tradelicense.TradelicenseApplicationTests.txt" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/com.trade.tradelicense.TradelicenseApplicationTests.txt" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="CopilotChats">
+    <option name="panelChat">
+      <chat>
+        <option name="activeSessionId" value="d3724aca-81ff-4895-b250-83800d4c854f" />
+        <option name="sessions">
+          <session>
+            <option name="chatType" value="PANEL" />
+            <option name="id" value="d3724aca-81ff-4895-b250-83800d4c854f" />
+            <option name="modeId" value="Agent" />
+            <option name="modelType" value="builtin_family" />
+            <option name="modelValue" value="auto" />
+            <option name="targetType" value="LOCAL" />
+          </session>
+        </option>
+        <option name="type" value="PANEL" />
+      </chat>
+    </option>
+  </component>
   <component name="CopilotPersistence">
     <persistenceIdMap>
       <entry key="_C:/Users/zacha/AppData/Local/Temp/aef058f3-c380-407d-9687-593e3baaaed3_demo.zip.ed3/tradelicense" value="3CoiIDcQuacGsYxiUHCSsY7T6pv" />
+      <entry key="_C:/Users/zacha/Documents/GitHub/TradeLicense Backend" value="3DSNzZgOsvIIk8Jkg9VG0GuPO4z" />
     </persistenceIdMap>
   </component>
   <component name="CopilotUserSelectedChatMode">
     <option name="chatModeId" value="Agent" />
   </component>
   <component name="EmbeddingIndexingInfo">
-    <option name="cachedIndexableFilesCount" value="145" />
+    <option name="cachedIndexableFilesCount" value="276" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -48,7 +127,7 @@
 }</component>
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/ZeekJager/EY9232.git&quot;,
+    &quot;url&quot;: &quot;https://github.com/ZeekJager/TradeLicense-Backend.git&quot;,
     &quot;accountId&quot;: &quot;7d0c3a54-2e7d-4b55-994f-0cdcb235bac8&quot;
   }
 }</component>
@@ -89,10 +168,10 @@
     &quot;Spring Boot.TradelicenseApplication.executor&quot;: &quot;Run&quot;,
     &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
     &quot;com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/zacha/AppData/Local/Temp/aef058f3-c380-407d-9687-593e3baaaed3_demo.zip.ed3/tradelicense&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/zacha/Documents/GitHub/TradeLicense Backend&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -100,6 +179,7 @@
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;ml.llm.LLMThirdPartyAiProvidersConfigurable&quot;,
     &quot;to.speed.mode.migration.done&quot;: &quot;true&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\Users\\zacha\\Documents\\GitHub\\TradeLicense Backend\\frontend\\node_modules\\typescript\\lib&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
@@ -145,6 +225,8 @@
       <workItem from="1777705270611" duration="6316000" />
       <workItem from="1778054153664" duration="792000" />
       <workItem from="1778263585486" duration="1509000" />
+      <workItem from="1778271776706" duration="11391000" />
+      <workItem from="1778317812001" duration="3462000" />
     </task>
     <task id="LOCAL-00001" summary="initialize Spring Boot project with Maven setup and basic application structure">
       <option name="closed" value="true" />
@@ -199,6 +281,23 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+    <option name="exactExcludedFiles">
+      <list>
+        <option value="$PROJECT_DIR$/frontend/vite.config.d.ts" />
+        <option value="$PROJECT_DIR$/frontend/vite.config.js" />
+      </list>
+    </option>
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="initialize Spring Boot project with Maven setup and basic application structure" />

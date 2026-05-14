@@ -4,6 +4,7 @@ import com.trade.tradelicense.application.commands.ApproveTradeLicenseApplicatio
 import com.trade.tradelicense.application.commands.handlers.ApproveTradeLicenseApplicationHandler;
 import com.trade.tradelicense.application.queries.GetPendingApprovalApplicationsQuery;
 import com.trade.tradelicense.application.queries.handlers.GetPendingApprovalApplicationsHandler;
+import com.trade.tradelicense.infrastructure.services.ApplicationAuditService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -22,13 +23,16 @@ import java.util.UUID;
 public class TradeLicenseApprovalController {
     private final ApproveTradeLicenseApplicationHandler approveHandler;
     private final GetPendingApprovalApplicationsHandler getPendingApprovalHandler;
+    private final ApplicationAuditService auditService;
 
     public TradeLicenseApprovalController(
             ApproveTradeLicenseApplicationHandler approveHandler,
-            GetPendingApprovalApplicationsHandler getPendingApprovalHandler
+            GetPendingApprovalApplicationsHandler getPendingApprovalHandler,
+            ApplicationAuditService auditService
     ) {
         this.approveHandler = approveHandler;
         this.getPendingApprovalHandler = getPendingApprovalHandler;
+        this.auditService = auditService;
     }
 
     @GetMapping("/pending")
@@ -54,6 +58,14 @@ public class TradeLicenseApprovalController {
                 request.tinNumber(),
                 request.licenseTypeToIssue()
         ));
+        auditService.record(
+                applicationId,
+                "APPROVAL_" + request.decision().name(),
+                result.data().status(),
+                request.approverId(),
+                request.role(),
+                request.comment()
+        );
         return ResponseEntity.ok(TradeLicenseApplicationResponse.fromDomain(result.data()));
     }
 }

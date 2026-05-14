@@ -4,5 +4,6 @@ public enum UserRole {
     CUSTOMER,
     LICENSEE,
     REVIEWER,
-    APPROVER
+    APPROVER,
+    ADMIN
 }

@@ -18,6 +18,7 @@ import com.trade.tradelicense.domain.valueobjects.Actor;
 import com.trade.tradelicense.domain.valueobjects.ApplicationId;
 import com.trade.tradelicense.domain.valueobjects.ApprovalComment;
 import com.trade.tradelicense.domain.valueobjects.ApproverId;
+import com.trade.tradelicense.domain.valueobjects.BankAccountNumber;
 import com.trade.tradelicense.domain.valueobjects.Commodity;
 import com.trade.tradelicense.domain.valueobjects.DocumentReference;
 import com.trade.tradelicense.domain.valueobjects.DocumentType;
@@ -26,6 +27,7 @@ import com.trade.tradelicense.domain.valueobjects.PaymentReference;
 import com.trade.tradelicense.domain.valueobjects.ReviewComment;
 import com.trade.tradelicense.domain.valueobjects.ReviewerId;
 import com.trade.tradelicense.domain.valueobjects.TradeLicenseType;
+import com.trade.tradelicense.domain.valueobjects.TradeName;
 
 import java.math.BigDecimal;
 import java.util.Objects;
@@ -33,8 +35,10 @@ import java.util.Objects;
 public class TradeLicenseApplication {
     private final ApplicationId id;
     private final User applicant;
+    private final TradeName tradeName;
     private final TradeLicenseType licenseType;
     private final Commodity commodity;
+    private final BankAccountNumber tradeBankAccountNumber;
     private final DocumentPackage documentPackage;
     private final PaymentSettlement paymentSettlement;
     private ReviewRecord reviewRecord;
@@ -44,8 +48,10 @@ public class TradeLicenseApplication {
     private TradeLicenseApplication(
             ApplicationId id,
             User applicant,
+            TradeName tradeName,
             TradeLicenseType licenseType,
             Commodity commodity,
+            BankAccountNumber tradeBankAccountNumber,
             DocumentPackage documentPackage,
             PaymentSettlement paymentSettlement,
             ReviewRecord reviewRecord,
@@ -54,8 +60,10 @@ public class TradeLicenseApplication {
     ) {
         this.id = Objects.requireNonNull(id, "Application id is required");
         this.applicant = Objects.requireNonNull(applicant, "Applicant is required");
+        this.tradeName = Objects.requireNonNull(tradeName, "Trade name is required");
         this.licenseType = Objects.requireNonNull(licenseType, "Trade license type is required");
         this.commodity = Objects.requireNonNull(commodity, "Commodity is required");
+        this.tradeBankAccountNumber = Objects.requireNonNull(tradeBankAccountNumber, "Trade bank account number is required");
         this.documentPackage = Objects.requireNonNull(documentPackage, "Document package is required");
         this.paymentSettlement = Objects.requireNonNull(paymentSettlement, "Payment settlement is required");
         this.reviewRecord = reviewRecord;
@@ -70,7 +78,41 @@ public class TradeLicenseApplication {
             Money fee,
             PaymentReference paymentReference
     ) {
-        return createDraft(applicant, licenseType, commodity, PaymentSettlement.pending(fee, paymentReference));
+        return createDraft(applicant, defaultTradeName(applicant), licenseType, commodity, new BankAccountNumber("PENDING_BANK_ACCOUNT"), PaymentSettlement.pending(fee, paymentReference));
+    }
+
+    public static TradeLicenseApplication createDraft(
+            User applicant,
+            TradeName tradeName,
+            TradeLicenseType licenseType,
+            Commodity commodity,
+            Money fee,
+            PaymentReference paymentReference
+    ) {
+        return createDraft(applicant, tradeName, licenseType, commodity, new BankAccountNumber("PENDING_BANK_ACCOUNT"), PaymentSettlement.pending(fee, paymentReference));
+    }
+
+    public static TradeLicenseApplication createDraft(
+            User applicant,
+            TradeLicenseType licenseType,
+            Commodity commodity,
+            BankAccountNumber tradeBankAccountNumber,
+            Money fee,
+            PaymentReference paymentReference
+    ) {
+        return createDraft(applicant, defaultTradeName(applicant), licenseType, commodity, tradeBankAccountNumber, PaymentSettlement.pending(fee, paymentReference));
+    }
+
+    public static TradeLicenseApplication createDraft(
+            User applicant,
+            TradeName tradeName,
+            TradeLicenseType licenseType,
+            Commodity commodity,
+            BankAccountNumber tradeBankAccountNumber,
+            Money fee,
+            PaymentReference paymentReference
+    ) {
+        return createDraft(applicant, tradeName, licenseType, commodity, tradeBankAccountNumber, PaymentSettlement.pending(fee, paymentReference));
     }
 
     public static TradeLicenseApplication createDraft(
@@ -79,11 +121,34 @@ public class TradeLicenseApplication {
             Commodity commodity,
             PaymentSettlement paymentSettlement
     ) {
+        return createDraft(applicant, defaultTradeName(applicant), licenseType, commodity, new BankAccountNumber("PENDING_BANK_ACCOUNT"), paymentSettlement);
+    }
+
+    public static TradeLicenseApplication createDraft(
+            User applicant,
+            TradeLicenseType licenseType,
+            Commodity commodity,
+            BankAccountNumber tradeBankAccountNumber,
+            PaymentSettlement paymentSettlement
+    ) {
+        return createDraft(applicant, defaultTradeName(applicant), licenseType, commodity, tradeBankAccountNumber, paymentSettlement);
+    }
+
+    public static TradeLicenseApplication createDraft(
+            User applicant,
+            TradeName tradeName,
+            TradeLicenseType licenseType,
+            Commodity commodity,
+            BankAccountNumber tradeBankAccountNumber,
+            PaymentSettlement paymentSettlement
+    ) {
         return new TradeLicenseApplication(
                 ApplicationId.newId(),
                 applicant,
+                tradeName,
                 licenseType,
                 commodity,
+                tradeBankAccountNumber,
                 new DocumentPackage(),
                 paymentSettlement,
                 null,
@@ -113,7 +178,7 @@ public class TradeLicenseApplication {
                     new DocumentReference("REHYDRATED_DOCUMENT")
             ));
         }
-        return rehydrate(id, applicant, licenseType, commodity, documentPackage, paymentSettlement, status);
+        return rehydrate(id, applicant, defaultTradeName(applicant), licenseType, commodity, new BankAccountNumber("REHYDRATED_BANK_ACCOUNT"), documentPackage, paymentSettlement, null, null, status);
     }
 
     public static TradeLicenseApplication rehydrate(
@@ -125,7 +190,7 @@ public class TradeLicenseApplication {
             PaymentSettlement paymentSettlement,
             ApplicationStatus status
     ) {
-        return rehydrate(id, applicant, licenseType, commodity, documentPackage, paymentSettlement, null, null, status);
+        return rehydrate(id, applicant, defaultTradeName(applicant), licenseType, commodity, new BankAccountNumber("REHYDRATED_BANK_ACCOUNT"), documentPackage, paymentSettlement, null, null, status);
     }
 
     public static TradeLicenseApplication rehydrate(
@@ -133,6 +198,36 @@ public class TradeLicenseApplication {
             User applicant,
             TradeLicenseType licenseType,
             Commodity commodity,
+            BankAccountNumber tradeBankAccountNumber,
+            DocumentPackage documentPackage,
+            PaymentSettlement paymentSettlement,
+            ApplicationStatus status
+    ) {
+        return rehydrate(id, applicant, defaultTradeName(applicant), licenseType, commodity, tradeBankAccountNumber, documentPackage, paymentSettlement, null, null, status);
+    }
+
+    public static TradeLicenseApplication rehydrate(
+            ApplicationId id,
+            User applicant,
+            TradeLicenseType licenseType,
+            Commodity commodity,
+            BankAccountNumber tradeBankAccountNumber,
+            DocumentPackage documentPackage,
+            PaymentSettlement paymentSettlement,
+            ReviewRecord reviewRecord,
+            ApprovalRecord approvalRecord,
+            ApplicationStatus status
+    ) {
+        return rehydrate(id, applicant, defaultTradeName(applicant), licenseType, commodity, tradeBankAccountNumber, documentPackage, paymentSettlement, reviewRecord, approvalRecord, status);
+    }
+
+    public static TradeLicenseApplication rehydrate(
+            ApplicationId id,
+            User applicant,
+            TradeName tradeName,
+            TradeLicenseType licenseType,
+            Commodity commodity,
+            BankAccountNumber tradeBankAccountNumber,
             DocumentPackage documentPackage,
             PaymentSettlement paymentSettlement,
             ReviewRecord reviewRecord,
@@ -142,8 +237,10 @@ public class TradeLicenseApplication {
         return new TradeLicenseApplication(
                 id,
                 applicant,
+                tradeName,
                 licenseType,
                 commodity,
+                tradeBankAccountNumber,
                 documentPackage,
                 paymentSettlement,
                 reviewRecord,
@@ -152,8 +249,14 @@ public class TradeLicenseApplication {
         );
     }
 
+    private static TradeName defaultTradeName(User applicant) {
+        return new TradeName(Objects.requireNonNull(applicant, "Applicant is required").getFullName().value());
+    }
+
     public void attachDocument(DocumentType documentType, DocumentReference documentReference) {
-        ensureStatus(ApplicationStatus.DRAFT, "Documents can only be attached while application is in draft");
+        if (status != ApplicationStatus.DRAFT && status != ApplicationStatus.RETURNED_FOR_ADJUSTMENT) {
+            throw new InvalidApplicationStateException("Documents can only be attached while application is in draft or returned for adjustment");
+        }
         documentPackage.addDocument(ApplicationDocument.upload(documentType, documentReference));
     }
 
@@ -252,12 +355,20 @@ public class TradeLicenseApplication {
         return applicant;
     }
 
+    public TradeName tradeName() {
+        return tradeName;
+    }
+
     public TradeLicenseType licenseType() {
         return licenseType;
     }
 
     public Commodity commodity() {
         return commodity;
+    }
+
+    public BankAccountNumber tradeBankAccountNumber() {
+        return tradeBankAccountNumber;
     }
 
     public DocumentPackage documentPackage() {
